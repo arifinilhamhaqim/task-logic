@@ -33,13 +33,9 @@
             ["id" => "5", "nama_mahasiswa" => "Laila Shafira", "program_studi" => "Pendidikan Matematika", "nilai_pertama" => 67, "nilai_kedua" => 83],
             ["id" => "6", "nama_mahasiswa" => "Indah Salma", "program_studi" => "Informatika", "nilai_pertama" => 65, "nilai_kedua" => 90],
         ];
-        $filtered_ids = ["1", "2", "4", "6"];
-        $filtered_data = array_filter($data_array, function ($data) use ($filtered_ids) {
-            return in_array($data['id'], $filtered_ids);
-        });
 
-        usort($filtered_data, function ($a, $b) use ($filtered_ids) {
-            return array_search($a['id'], $filtered_ids) - array_search($b['id'], $filtered_ids);
+        $filtered_data = array_filter($data_array, function ($item) {
+            return in_array($item['program_studi'], ['Informatika', 'Manajemen']);
         });
 
         foreach ($filtered_data as $index => $data) {
