@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2 style="text-align: center;">Daftar Nilai Mahasiswa Program Studi </h2>
-    <h3 style="text-align: center;">Informatika Dan Manajemen</h3>
+<h3 style="text-align: center;">Informatika Dan Manajemen</h3>
 
 <table>
     <thead>
@@ -26,13 +26,23 @@
     <tbody>
         <?php
         $data_array = [
-            ["nama_mahasiswa" => "Rifqi Ismail", "program_studi" => "Informatika", "nilai_pertama" => 70, "nilai_kedua" => 93],
-            ["nama_mahasiswa" => "Sadad Nabil", "program_studi" => "Manajemen", "nilai_pertama" => 80, "nilai_kedua" => 62],
-            ["nama_mahasiswa" => "Zaenal Arham", "program_studi" => "Informatika", "nilai_pertama" => 87, "nilai_kedua" => 63],
-            ["nama_mahasiswa" => "Indah Salma", "program_studi" => "Informatika", "nilai_pertama" => 65, "nilai_kedua" => 90],
+            ["id" => "1", "nama_mahasiswa" => "Rifqi Ismail", "program_studi" => "Informatika", "nilai_pertama" => 70, "nilai_kedua" => 93],
+            ["id" => "2", "nama_mahasiswa" => "Sadad Nabil", "program_studi" => "Manajemen", "nilai_pertama" => 80, "nilai_kedua" => 62],
+            ["id" => "3", "nama_mahasiswa" => "Friska Aprilia", "program_studi" => "Akuntansi", "nilai_pertama" => 92, "nilai_kedua" => 77],
+            ["id" => "4", "nama_mahasiswa" => "Zaenal Arham", "program_studi" => "Informatika", "nilai_pertama" => 87, "nilai_kedua" => 63],
+            ["id" => "5", "nama_mahasiswa" => "Laila Shafira", "program_studi" => "Pendidikan Matematika", "nilai_pertama" => 67, "nilai_kedua" => 83],
+            ["id" => "6", "nama_mahasiswa" => "Indah Salma", "program_studi" => "Informatika", "nilai_pertama" => 65, "nilai_kedua" => 90],
         ];
+        $filtered_ids = ["1", "2", "4", "6"];
+        $filtered_data = array_filter($data_array, function ($data) use ($filtered_ids) {
+            return in_array($data['id'], $filtered_ids);
+        });
 
-        foreach ($data_array as $index => $data) {
+        usort($filtered_data, function ($a, $b) use ($filtered_ids) {
+            return array_search($a['id'], $filtered_ids) - array_search($b['id'], $filtered_ids);
+        });
+
+        foreach ($filtered_data as $index => $data) {
             $total_nilai = $data['nilai_pertama'] + $data['nilai_kedua'];
             $rata_rata = $total_nilai / 2;
             $status = $total_nilai > 150 ? "LULUS" : "TIDAK LULUS";
