@@ -1,0 +1,50 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 0;
+  color: #000;
+}
+h3 {
+  font-size: 22px;
+  margin: 0;
+  color: #000;
+}
+table {
+  width: 80%;
+  margin: 1px;
+  margin: auto;
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+
+th {
+  background-color: #bcc2bc;
+  color: rgb(12, 12, 12);
+}
+table,
+th,
+td {
+  border: 1px solid rgb(10, 10, 10);
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+.lulus {
+  background-color: #5af74e;
+}
+
+.tidak-lulus {
+  background-color: #f2ecec;
+}
+
+h2,
+h3 {
+  text-align: center;
+}
